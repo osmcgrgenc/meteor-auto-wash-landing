@@ -1,9 +1,8 @@
 [build]
-  command = "bun install && bun run build"
-  providers = ["node", "bun"]
+  command = "bun install && bun run build && mkdir -p public && cp -r dist/client/* public/"
 
 [start]
-  command = "node server-prod.js"
+  command = "srvx --prod public dist/server/server.js"
   port = 3000
 
 [vars]

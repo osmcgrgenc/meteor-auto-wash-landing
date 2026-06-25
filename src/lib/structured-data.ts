@@ -1,6 +1,7 @@
 import { siteConfig } from "@/config/site.config";
 
-const SITE_URL = (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
+const SITE_URL =
+  (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
 
 export function localBusinessJsonLd() {
   return {
@@ -52,9 +53,7 @@ export function faqJsonLd() {
   };
 }
 
-export function breadcrumbJsonLd(
-  items: { name: string; path: string }[],
-) {
+export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

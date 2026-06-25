@@ -25,13 +25,11 @@ const INSTAGRAM_URL =
 export const siteConfig = {
   name: "Meteor Oto Yıkama",
   tagline: "Aracınız Temizliğin En İyisini Hak Ediyor",
-  shortDescription:
-    "Selçuklu Konya'da aracınız için özenli iç ve dış temizlik hizmetleri.",
+  shortDescription: "Selçuklu Konya'da aracınız için özenli iç ve dış temizlik hizmetleri.",
   phoneDisplay: "0530 958 13 33",
   phoneTel: "+905309581333",
   whatsappNumber: WHATSAPP_NUMBER,
-  whatsappMessage:
-    "Merhaba Meteor Oto Yıkama, aracım için randevu almak istiyorum.",
+  whatsappMessage: "Merhaba Meteor Oto Yıkama, aracım için randevu almak istiyorum.",
   appointmentUrl: APPOINTMENT_URL,
   instagram: INSTAGRAM_URL,
   instagramHandle: "@meteorotoyikama",
@@ -61,12 +59,7 @@ export const siteConfig = {
     { label: "Galeri", href: "#galeri" },
     { label: "İletişim", href: "#iletisim" },
   ],
-  trustItems: [
-    "Kolay Randevu",
-    "Özenli Temizlik",
-    "Modern Ekipman",
-    "Selçuklu'da Merkezi Konum",
-  ],
+  trustItems: ["Kolay Randevu", "Özenli Temizlik", "Modern Ekipman", "Selçuklu'da Merkezi Konum"],
   services: [
     {
       id: "ic-dis-yikama",
@@ -131,8 +124,7 @@ export const siteConfig = {
     },
     {
       question: "Hangi ödeme yöntemlerini kabul ediyorsunuz?",
-      answer:
-        "Nakit, kredi kartı ve havale/EFT ile ödeme yapabilirsiniz. Tüm kartlar geçerlidir.",
+      answer: "Nakit, kredi kartı ve havale/EFT ile ödeme yapabilirsiniz. Tüm kartlar geçerlidir.",
     },
     {
       question: "Konumunuz nerede?",

@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
-const SITE_URL = (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
+const SITE_URL =
+  (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
 
 export const Route = createFileRoute("/gizlilik-politikasi")({
   head: () => ({
@@ -60,68 +61,52 @@ function PrivacyPage() {
 
         <div className="mt-8 space-y-8 text-muted-foreground">
           <section>
-            <h2 className="text-lg font-semibold text-foreground">
-              1. Genel Bilgilendirme
-            </h2>
+            <h2 className="text-lg font-semibold text-foreground">1. Genel Bilgilendirme</h2>
             <p className="mt-2">
-              meteorotoyikama.com web sitesini ziyaretiniz sırasında
-              gizliliğinizin korunması bizim için önemlidir. Bu politika,
-              hangi verileri topladığımızı ve nasıl kullandığımızı
+              meteorotoyikama.com web sitesini ziyaretiniz sırasında gizliliğinizin korunması bizim
+              için önemlidir. Bu politika, hangi verileri topladığımızı ve nasıl kullandığımızı
               açıklamaktadır.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-foreground">
-              2. Toplanan Veriler
-            </h2>
+            <h2 className="text-lg font-semibold text-foreground">2. Toplanan Veriler</h2>
             <p className="mt-2">
-              Sitemiz aracılığıyla doğrudan sağladığınız iletişim bilgileri
--ad,
-              telefon, araç bilgisi) dışında, ziyaret verileri (tarayıcı tipi,
-              ziyaret süresi vb.) otomatik olarak toplanabilir.
+              Sitemiz aracılığıyla doğrudan sağladığınız iletişim bilgileri -ad, telefon, araç
+              bilgisi) dışında, ziyaret verileri (tarayıcı tipi, ziyaret süresi vb.) otomatik olarak
+              toplanabilir.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-foreground">
-              3. Çerezler (Cookies)
-            </h2>
+            <h2 className="text-lg font-semibold text-foreground">3. Çerezler (Cookies)</h2>
             <p className="mt-2">
-              Web sitemiz, kullanıcı deneyimini iyileştirmek amacıyla çerez
-              kullanabilir. Tarayıcı ayarlarınızdan çerezleri
-              yönetebilirsiniz.
+              Web sitemiz, kullanıcı deneyimini iyileştirmek amacıyla çerez kullanabilir. Tarayıcı
+              ayarlarınızdan çerezleri yönetebilirsiniz.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-foreground">
-              4. Üçüncü Taraf Bağlantıları
-            </h2>
+            <h2 className="text-lg font-semibold text-foreground">4. Üçüncü Taraf Bağlantıları</h2>
             <p className="mt-2">
-              Sitemizde Instagram, Google Maps ve WhatsApp bağlantıları
-              bulunmaktadır. Bu platformların gizlilik politikaları kendi
-              sorumluluğundadır.
+              Sitemizde Instagram, Google Maps ve WhatsApp bağlantıları bulunmaktadır. Bu
+              platformların gizlilik politikaları kendi sorumluluğundadır.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-foreground">
-              5. Değişiklikler
-            </h2>
+            <h2 className="text-lg font-semibold text-foreground">5. Değişiklikler</h2>
             <p className="mt-2">
-              Bu gizlilik politikası zaman zaman güncellenebilir. Değişiklikler
-              bu sayfada yayınlanır.
+              Bu gizlilik politikası zaman zaman güncellenebilir. Değişiklikler bu sayfada
+              yayınlanır.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-foreground">
-              6. İletişim
-            </h2>
+            <h2 className="text-lg font-semibold text-foreground">6. İletişim</h2>
             <p className="mt-2">
-              Gizlilik politikamız hakkında sorularınız için bize WhatsApp
-              (05309581333) üzerinden ulaşabilirsiniz.
+              Gizlilik politikamız hakkında sorularınız için bize WhatsApp (05309581333) üzerinden
+              ulaşabilirsiniz.
             </p>
           </section>
         </div>

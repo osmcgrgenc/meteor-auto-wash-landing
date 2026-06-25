@@ -9,11 +9,7 @@ type LogoProps = {
  * meteor with star streaking over a car silhouette, "METEOR" wordmark with
  * orange middle bar, "OTO YIKAMA" subtitle below.
  */
-export function MeteorLogo({
-  variant = "horizontal",
-  onDark = false,
-  className = "",
-}: LogoProps) {
+export function MeteorLogo({ variant = "horizontal", onDark = false, className = "" }: LogoProps) {
   const dark = onDark ? "#ffffff" : "#1a1d22";
   const orange = "#ff5a1f";
   const subtitle = onDark ? "#ffffff" : "#1a1d22";

@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
-const SITE_URL = (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
+const SITE_URL =
+  (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
 
 export const Route = createFileRoute("/kvkk")({
   head: () => ({
@@ -62,59 +63,45 @@ function KVKKPage() {
 
         <div className="mt-8 space-y-8 text-muted-foreground">
           <section>
-            <h2 className="text-lg font-semibold text-foreground">
-              1. Veri Sorumlusu
-            </h2>
+            <h2 className="text-lg font-semibold text-foreground">1. Veri Sorumlusu</h2>
             <p className="mt-2">
-              6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında
-              veri sorumlusu olarak Meteor Oto Yıkama hizmet vermektedir.
-              Adresimiz: Selahaddin Eyyubi Mah. Elyesa Sk. Mete Konakları,
-              Selçuklu / Konya.
+              6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") kapsamında veri sorumlusu
+              olarak Meteor Oto Yıkama hizmet vermektedir. Adresimiz: Selahaddin Eyyubi Mah. Elyesa
+              Sk. Mete Konakları, Selçuklu / Konya.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-foreground">
-              2. İşlenen Kişisel Veriler
-            </h2>
+            <h2 className="text-lg font-semibold text-foreground">2. İşlenen Kişisel Veriler</h2>
             <p className="mt-2">
-              Randevu ve hizmet süreçlerimiz kapsamında; ad-soyad, telefon
-              numarası, araç plakası ve hizmet tercihleriniz gibi veriler
-              işlenebilmektedir.
+              Randevu ve hizmet süreçlerimiz kapsamında; ad-soyad, telefon numarası, araç plakası ve
+              hizmet tercihleriniz gibi veriler işlenebilmektedir.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-foreground">
-              3. Veri İşleme Amaçları
-            </h2>
+            <h2 className="text-lg font-semibold text-foreground">3. Veri İşleme Amaçları</h2>
             <p className="mt-2">
-              Kişisel verileriniz; randevu oluşturma, hizmet sunumu, müşteri
-              iletişimi, memnuniyet takibi ve yasal yükümlülüklerin
-              yerine getirilmesi amaçlarıyla işlenmektedir.
+              Kişisel verileriniz; randevu oluşturma, hizmet sunumu, müşteri iletişimi, memnuniyet
+              takibi ve yasal yükümlülüklerin yerine getirilmesi amaçlarıyla işlenmektedir.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-foreground">
-              4. Haklarınız
-            </h2>
+            <h2 className="text-lg font-semibold text-foreground">4. Haklarınız</h2>
             <p className="mt-2">
-              KVKK'nın 11. maddesi uyarınca; kişisel verilerinizin işlenip
-              işlenmediğini öğrenme, işlenmişse bilgi talep etme, işlenme
-              amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme,
-              düzeltme, silme veya yok edilmesini talep etme haklarına
+              KVKK'nın 11. maddesi uyarınca; kişisel verilerinizin işlenip işlenmediğini öğrenme,
+              işlenmişse bilgi talep etme, işlenme amacını ve amacına uygun kullanılıp
+              kullanılmadığını öğrenme, düzeltme, silme veya yok edilmesini talep etme haklarına
               sahipsiniz.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-foreground">
-              5. İletişim
-            </h2>
+            <h2 className="text-lg font-semibold text-foreground">5. İletişim</h2>
             <p className="mt-2">
-              Haklarınıza ilişkin taleplerinizi telefon (05309581333) veya
-              WhatsApp üzerinden bize iletebilirsiniz.
+              Haklarınıza ilişkin taleplerinizi telefon (05309581333) veya WhatsApp üzerinden bize
+              iletebilirsiniz.
             </p>
           </section>
         </div>

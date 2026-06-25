@@ -27,7 +27,8 @@ import interiorImg from "@/assets/interior-detail.jpg";
 import waxImg from "@/assets/wax-polish.jpg";
 import engineImg from "@/assets/engine-clean.jpg";
 
-const SITE_URL = (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
+const SITE_URL =
+  (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -175,7 +176,10 @@ function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Wordmark />
 
-        <nav className="hidden items-center gap-7 text-sm text-muted-foreground md:flex" aria-label="Ana menü">
+        <nav
+          className="hidden items-center gap-7 text-sm text-muted-foreground md:flex"
+          aria-label="Ana menü"
+        >
           {siteConfig.nav.map((n) => (
             <a key={n.href} href={n.href} className="transition-colors hover:text-foreground">
               {n.label}
@@ -265,8 +269,7 @@ function Hero() {
           aria-hidden
           className="absolute -top-40 right-[-10%] h-[60vh] w-[60vh] rounded-full"
           style={{
-            background:
-              "radial-gradient(closest-side, oklch(0.7 0.2 45 / 0.35), transparent)",
+            background: "radial-gradient(closest-side, oklch(0.7 0.2 45 / 0.35), transparent)",
           }}
         />
       </div>
@@ -279,13 +282,12 @@ function Hero() {
           </div>
 
           <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight text-on-dark drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] sm:text-5xl lg:text-6xl">
-            Aracınız Temizliğin{" "}
-            <span className="text-gradient">En İyisini</span> Hak Ediyor
+            Aracınız Temizliğin <span className="text-gradient">En İyisini</span> Hak Ediyor
           </h1>
 
           <p className="mt-5 max-w-xl text-base text-on-dark-muted sm:text-lg">
-            Aracınızın iç ve dış temizliğini özenli uygulamalarla tamamlıyor,
-            her detayda temiz ve bakımlı bir görünüm sunuyoruz.
+            Aracınızın iç ve dış temizliğini özenli uygulamalarla tamamlıyor, her detayda temiz ve
+            bakımlı bir görünüm sunuyoruz.
           </p>
 
           <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -326,10 +328,7 @@ function TrustStrip() {
     <section aria-label="Öne çıkanlar" className="border-b border-border bg-surface">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-4 py-6 sm:px-6 md:grid-cols-4">
         {siteConfig.trustItems.map((t) => (
-          <div
-            key={t}
-            className="flex items-center gap-2 text-sm font-medium text-foreground"
-          >
+          <div key={t} className="flex items-center gap-2 text-sm font-medium text-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             {t}
           </div>
@@ -360,9 +359,7 @@ function SectionHeading({
         </div>
       )}
       <h2 className="mt-3 text-3xl font-bold sm:text-4xl">{title}</h2>
-      {description && (
-        <p className="mt-4 text-base text-muted-foreground">{description}</p>
-      )}
+      {description && <p className="mt-4 text-base text-muted-foreground">{description}</p>}
     </div>
   );
 }
@@ -394,9 +391,7 @@ function Services() {
                 </span>
                 <h3 className="text-base font-semibold">{s.title}</h3>
               </div>
-              <p className="mt-3 line-clamp-2 text-sm text-muted-foreground">
-                {s.description}
-              </p>
+              <p className="mt-3 line-clamp-2 text-sm text-muted-foreground">{s.description}</p>
               <a
                 href={whatsappUrl(msg)}
                 target="_blank"
@@ -432,9 +427,7 @@ function Process() {
               key={s.n}
               className="relative rounded-2xl border border-border bg-surface p-6 shadow-card"
             >
-              <span className="font-display text-4xl font-extrabold text-primary/30">
-                {s.n}
-              </span>
+              <span className="font-display text-4xl font-extrabold text-primary/30">{s.n}</span>
               <h3 className="mt-3 text-lg font-semibold">{s.t}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{s.d}</p>
             </li>
@@ -471,13 +464,10 @@ function WhyMeteor() {
           <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
             Neden Meteor?
           </div>
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
-            Temizlik Sadece Görünüm Değildir
-          </h2>
+          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Temizlik Sadece Görünüm Değildir</h2>
           <p className="mt-4 text-base text-muted-foreground">
-            Meteor Oto Yıkama'da her araç özenle ele alınır. Amacımız yalnızca
-            aracınızı temizlemek değil, teslim aldığınız anda farkı
-            hissettirmektir.
+            Meteor Oto Yıkama'da her araç özenle ele alınır. Amacımız yalnızca aracınızı temizlemek
+            değil, teslim aldığınız anda farkı hissettirmektir.
           </p>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             {points.map((p) => (
@@ -508,11 +498,7 @@ function Gallery() {
     <section id="galeri" className="bg-surface-elevated py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHeading
-            align="left"
-            eyebrow="Galeri"
-            title="Çalışmalarımızdan Kareler"
-          />
+          <SectionHeading align="left" eyebrow="Galeri" title="Çalışmalarımızdan Kareler" />
           <a
             href={siteConfig.instagram}
             target="_blank"
@@ -568,8 +554,7 @@ function AppointmentCta() {
           aria-hidden
           className="absolute -right-24 -top-24 h-72 w-72 rounded-full"
           style={{
-            background:
-              "radial-gradient(closest-side, oklch(0.7 0.2 45 / 0.35), transparent)",
+            background: "radial-gradient(closest-side, oklch(0.7 0.2 45 / 0.35), transparent)",
           }}
         />
         <div className="relative grid items-center gap-8 md:grid-cols-[1.1fr_auto]">
@@ -578,8 +563,7 @@ function AppointmentCta() {
               Aracınız İçin Uygun Zamanı Seçin
             </h2>
             <p className="mt-4 max-w-xl text-on-dark-muted">
-              Randevunuzu oluşturun veya detaylı bilgi için WhatsApp üzerinden
-              bize ulaşın.
+              Randevunuzu oluşturun veya detaylı bilgi için WhatsApp üzerinden bize ulaşın.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -619,11 +603,7 @@ function Faq() {
       />
       <div className="mt-10 divide-y divide-border rounded-2xl border border-border bg-surface shadow-card">
         {siteConfig.faqs.map((f, i) => (
-          <details
-            key={i}
-            className="group px-5 py-4 sm:px-6"
-            {...(i === 0 ? { open: true } : {})}
-          >
+          <details key={i} className="group px-5 py-4 sm:px-6" {...(i === 0 ? { open: true } : {})}>
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-semibold text-foreground">
               {f.question}
               <span
@@ -633,9 +613,7 @@ function Faq() {
                 +
               </span>
             </summary>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              {f.answer}
-            </p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.answer}</p>
           </details>
         ))}
       </div>
@@ -679,9 +657,7 @@ function Contact() {
           <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
             <MapPin className="h-4 w-4 text-primary" /> Adres
           </div>
-          <p className="mt-3 text-sm leading-relaxed text-foreground">
-            {siteConfig.address.full}
-          </p>
+          <p className="mt-3 text-sm leading-relaxed text-foreground">{siteConfig.address.full}</p>
           <div className="mt-4 flex flex-wrap gap-2">
             <a
               href={siteConfig.mapsQuery}
@@ -762,8 +738,7 @@ function Contact() {
         {" · "}
         <span>
           {siteConfig.address.neighborhood} {siteConfig.address.street},{" "}
-          {siteConfig.address.postalCode} {siteConfig.address.district}/
-          {siteConfig.address.city}
+          {siteConfig.address.postalCode} {siteConfig.address.district}/{siteConfig.address.city}
         </span>
         {" · "}
         <a href={telHref()} className="hover:text-primary">
@@ -785,8 +760,7 @@ function Footer() {
         <div>
           <Wordmark dark />
           <p className="mt-4 max-w-sm text-sm text-on-dark-muted">
-            Selçuklu Konya'da aracınız için özenli iç ve dış temizlik
-            hizmetleri.
+            Selçuklu Konya'da aracınız için özenli iç ve dış temizlik hizmetleri.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             <a

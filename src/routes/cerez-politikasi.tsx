@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
-const SITE_URL = (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
+const SITE_URL =
+  (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
 
 export const Route = createFileRoute("/cerez-politikasi")({
   head: () => ({
@@ -55,34 +56,31 @@ function CookiePolicy() {
         <div className="prose prose-neutral mt-8 max-w-none text-foreground">
           <h2 className="mt-8 text-xl font-semibold">1. Çerez Nedir?</h2>
           <p className="mt-2 text-muted-foreground">
-            Çerezler, ziyaret ettiğiniz web sitesi tarafından tarayıcınıza
-            yerleştirilen küçük metin dosyalarıdır. Sitenin doğru çalışmasını
-            sağlamak ve kullanım deneyiminizi iyileştirmek amacıyla kullanılır.
+            Çerezler, ziyaret ettiğiniz web sitesi tarafından tarayıcınıza yerleştirilen küçük metin
+            dosyalarıdır. Sitenin doğru çalışmasını sağlamak ve kullanım deneyiminizi iyileştirmek
+            amacıyla kullanılır.
           </p>
 
           <h2 className="mt-8 text-xl font-semibold">2. Kullandığımız Çerezler</h2>
           <ul className="mt-2 list-disc pl-5 text-muted-foreground">
             <li>
-              <strong>Zorunlu çerezler:</strong> Sitenin temel işlevleri için
-              gereklidir.
+              <strong>Zorunlu çerezler:</strong> Sitenin temel işlevleri için gereklidir.
             </li>
             <li>
-              <strong>Performans çerezleri:</strong> Ziyaretçilerin siteyi nasıl
-              kullandığını anlamamıza yardımcı olur.
+              <strong>Performans çerezleri:</strong> Ziyaretçilerin siteyi nasıl kullandığını
+              anlamamıza yardımcı olur.
             </li>
           </ul>
 
           <h2 className="mt-8 text-xl font-semibold">3. Çerezleri Yönetme</h2>
           <p className="mt-2 text-muted-foreground">
-            Tarayıcı ayarlarınızdan çerezleri kabul edebilir, reddedebilir veya
-            silebilirsiniz. Çerezleri devre dışı bırakmanız sitenin bazı
-            işlevlerinin çalışmamasına neden olabilir.
+            Tarayıcı ayarlarınızdan çerezleri kabul edebilir, reddedebilir veya silebilirsiniz.
+            Çerezleri devre dışı bırakmanız sitenin bazı işlevlerinin çalışmamasına neden olabilir.
           </p>
 
           <h2 className="mt-8 text-xl font-semibold">4. İletişim</h2>
           <p className="mt-2 text-muted-foreground">
-            Çerez politikamız hakkında sorularınız için bizimle iletişime
-            geçebilirsiniz.
+            Çerez politikamız hakkında sorularınız için bizimle iletişime geçebilirsiniz.
           </p>
         </div>
       </div>

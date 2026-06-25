@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-
-# Sitemap: Set PUBLIC_SITE_URL environment variable and rebuild
-# The sitemap will be available at /sitemap.xml

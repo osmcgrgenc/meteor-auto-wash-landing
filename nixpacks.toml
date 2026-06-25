@@ -1,17 +1,9 @@
 [build]
   command = "bun install && bun run build"
-  buildplan = '''
-  {
-    "providers": ["node", "bun"],
-    "useNode": false,
-    "useBun": true
-  }
-  '''
 
 [start]
-  command = "bun run start"
+  command = "srvx --prod --static=./dist/client --entry ./dist/server/server.js"
   port = 3000
 
 [vars]
   NODE_ENV = "production"
-  PORT = "3000"

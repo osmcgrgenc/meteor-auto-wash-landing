@@ -1,0 +1,12 @@
+# Meteor Oto Yıkama
+
+> Selçuklu Konya'da profesyonel oto yıkama ve detaylı araç temizlik hizmetleri. WhatsApp ile tek tıkla randevu.
+
+Meteor Oto Yıkama, Selahaddin Eyyubi Mahallesi Mete Konakları'nda hizmet veren bir oto yıkama ve detaylı temizlik işletmesidir. İç-dış yıkama, koltuk ve döşeme temizliği, jant-lastik bakımı, pasta cila ve boya koruma uygulamaları sunar.
+
+## Pages
+
+- [Ana Sayfa](/): Hizmetler, galeri, sıkça sorulan sorular ve iletişim bilgileri.
+- [KVKK Aydınlatma Metni](/kvkk): Kişisel verilerin korunmasına ilişkin bilgilendirme.
+- [Gizlilik Politikası](/gizlilik-politikasi): Web sitesi gizlilik politikası.
+- [Çerez Politikası](/cerez-politikasi): Çerez kullanımına ilişkin bilgilendirme.

@@ -1,0 +1,134 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-dark-2: var(--surface-dark-2);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-muted: var(--on-dark-muted);
+  --font-display: "Sora", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Light premium base */
+  --background: oklch(0.985 0.003 95);   /* kırık beyaz */
+  --foreground: oklch(0.18 0.01 250);    /* koyu grafit */
+
+  --surface: oklch(1 0 0);
+  --surface-elevated: oklch(0.97 0.005 95);
+
+  /* Dark surfaces for hero / cta / footer */
+  --surface-dark: oklch(0.18 0.01 250);
+  --surface-dark-2: oklch(0.14 0.012 250);
+  --on-dark: oklch(0.98 0.005 95);
+  --on-dark-muted: oklch(0.75 0.012 250);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.01 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.01 250);
+
+  /* Meteor orange */
+  --primary: oklch(0.7 0.19 42);
+  --primary-foreground: oklch(0.99 0 0);
+
+  --secondary: oklch(0.96 0.005 95);
+  --secondary-foreground: oklch(0.2 0.01 250);
+
+  --muted: oklch(0.95 0.005 95);
+  --muted-foreground: oklch(0.5 0.012 250);
+
+  --accent: oklch(0.7 0.19 42);
+  --accent-foreground: oklch(0.99 0 0);
+
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(0.92 0.005 95);
+  --input: oklch(0.92 0.005 95);
+  --ring: oklch(0.7 0.19 42);
+
+  --whatsapp: oklch(0.72 0.17 150);
+  --whatsapp-foreground: oklch(1 0 0);
+
+  --gradient-primary: linear-gradient(135deg, oklch(0.72 0.2 45), oklch(0.6 0.22 30));
+  --gradient-dark: linear-gradient(160deg, oklch(0.19 0.012 250) 0%, oklch(0.13 0.015 255) 100%);
+  --gradient-hero-overlay: linear-gradient(90deg, oklch(0.13 0.015 255 / 0.96) 0%, oklch(0.13 0.015 255 / 0.78) 55%, oklch(0.13 0.015 255 / 0.45) 100%);
+
+  --shadow-glow: 0 14px 40px -14px oklch(0.7 0.2 45 / 0.55);
+  --shadow-card: 0 4px 18px -8px oklch(0 0 0 / 0.12);
+  --shadow-elevated: 0 24px 60px -28px oklch(0 0 0 / 0.25);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--foreground);
+  }
+}
+
+@utility text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility bg-gradient-primary { background: var(--gradient-primary); }
+@utility bg-gradient-dark { background: var(--gradient-dark); }
+@utility bg-hero-overlay { background: var(--gradient-hero-overlay); }
+@utility shadow-glow { box-shadow: var(--shadow-glow); }
+@utility shadow-card { box-shadow: var(--shadow-card); }
+@utility shadow-elevated { box-shadow: var(--shadow-elevated); }
+
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -25,4 +25,5 @@ COPY --from=builder /app/dist ./dist
 
 EXPOSE 3000
 
-CMD ["srvx", "--prod", "public", "dist/server/server.js"]
+# Use ABSOLUTE paths for srvx
+CMD ["sh", "-c", "srvx --prod /app/public /app/dist/server/server.js"]

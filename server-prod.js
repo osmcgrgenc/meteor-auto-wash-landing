@@ -51,7 +51,10 @@ async function serveStatic(urlPath) {
       const ext = extname(filePath);
       const contentType = MIME_TYPES[ext] || "application/octet-stream";
       return new Response(content, {
-        headers: { "Content-Type": contentType },
+        headers: {
+          "Content-Type": contentType,
+          "Cache-Control": "public, max-age=31536000, immutable",
+        },
       });
     }
   } catch {
@@ -111,8 +114,9 @@ const server = createServer(async (req, res) => {
       res.setHeader(key, value);
     });
 
-    const body = await response.text();
-    res.end(body);
+    // Use arrayBuffer for binary data (images, fonts, etc.)
+    const body = await response.arrayBuffer();
+    res.end(Buffer.from(body));
   } catch (error) {
     console.error("Request error:", error);
     res.statusCode = 500;

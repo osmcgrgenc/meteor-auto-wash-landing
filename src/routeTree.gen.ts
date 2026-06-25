@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as KvkkRouteImport } from './routes/kvkk'
+import { Route as HealthRouteImport } from './routes/health'
 import { Route as GizlilikPolitikasiRouteImport } from './routes/gizlilik-politikasi'
 import { Route as CerezPolitikasiRouteImport } from './routes/cerez-politikasi'
 import { Route as IndexRouteImport } from './routes/index'
@@ -23,6 +24,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const KvkkRoute = KvkkRouteImport.update({
   id: '/kvkk',
   path: '/kvkk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HealthRoute = HealthRouteImport.update({
+  id: '/health',
+  path: '/health',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GizlilikPolitikasiRoute = GizlilikPolitikasiRouteImport.update({
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cerez-politikasi': typeof CerezPolitikasiRoute
   '/gizlilik-politikasi': typeof GizlilikPolitikasiRoute
+  '/health': typeof HealthRoute
   '/kvkk': typeof KvkkRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cerez-politikasi': typeof CerezPolitikasiRoute
   '/gizlilik-politikasi': typeof GizlilikPolitikasiRoute
+  '/health': typeof HealthRoute
   '/kvkk': typeof KvkkRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -60,6 +68,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cerez-politikasi': typeof CerezPolitikasiRoute
   '/gizlilik-politikasi': typeof GizlilikPolitikasiRoute
+  '/health': typeof HealthRoute
   '/kvkk': typeof KvkkRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -69,6 +78,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cerez-politikasi'
     | '/gizlilik-politikasi'
+    | '/health'
     | '/kvkk'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
@@ -76,6 +86,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cerez-politikasi'
     | '/gizlilik-politikasi'
+    | '/health'
     | '/kvkk'
     | '/sitemap.xml'
   id:
@@ -83,6 +94,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cerez-politikasi'
     | '/gizlilik-politikasi'
+    | '/health'
     | '/kvkk'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
@@ -91,6 +103,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CerezPolitikasiRoute: typeof CerezPolitikasiRoute
   GizlilikPolitikasiRoute: typeof GizlilikPolitikasiRoute
+  HealthRoute: typeof HealthRoute
   KvkkRoute: typeof KvkkRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
@@ -109,6 +122,13 @@ declare module '@tanstack/react-router' {
       path: '/kvkk'
       fullPath: '/kvkk'
       preLoaderRoute: typeof KvkkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/health': {
+      id: '/health'
+      path: '/health'
+      fullPath: '/health'
+      preLoaderRoute: typeof HealthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gizlilik-politikasi': {
@@ -139,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CerezPolitikasiRoute: CerezPolitikasiRoute,
   GizlilikPolitikasiRoute: GizlilikPolitikasiRoute,
+  HealthRoute: HealthRoute,
   KvkkRoute: KvkkRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }

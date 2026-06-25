@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://meteor-shine-hub.lovable.app/sitemap.xml
+# Sitemap: Set PUBLIC_SITE_URL environment variable and rebuild
+# The sitemap will be available at /sitemap.xml

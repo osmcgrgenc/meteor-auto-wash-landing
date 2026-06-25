@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
+const SITE_URL = (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
+
 export const Route = createFileRoute("/kvkk")({
   head: () => ({
     meta: [
@@ -17,9 +19,9 @@ export const Route = createFileRoute("/kvkk")({
         content:
           "Meteor Oto Yıkama KVKK aydınlatma metni. Kişisel verilerinizin korunması ve işlenmesine ilişkin bilgilendirme.",
       },
-      { property: "og:url", content: "https://meteor-shine-hub.lovable.app/kvkk" },
+      { property: "og:url", content: `${SITE_URL}/kvkk` },
     ],
-    links: [{ rel: "canonical", href: "https://meteor-shine-hub.lovable.app/kvkk" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/kvkk` }],
     scripts: [
       {
         type: "application/ld+json",

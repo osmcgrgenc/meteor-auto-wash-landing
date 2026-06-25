@@ -1,6 +1,6 @@
 import { siteConfig } from "@/config/site.config";
 
-const SITE_URL = "https://meteor-shine-hub.lovable.app";
+const SITE_URL = (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
 
 export function localBusinessJsonLd() {
   return {

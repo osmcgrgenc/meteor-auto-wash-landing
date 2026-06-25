@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
+const SITE_URL = (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
+
 export const Route = createFileRoute("/gizlilik-politikasi")({
   head: () => ({
     meta: [
@@ -17,9 +19,9 @@ export const Route = createFileRoute("/gizlilik-politikasi")({
         content:
           "Meteor Oto Yıkama gizlilik politikası. Web sitemizi kullanırken verileriniz nasıl korunuyor.",
       },
-      { property: "og:url", content: "https://meteor-shine-hub.lovable.app/gizlilik-politikasi" },
+      { property: "og:url", content: `${SITE_URL}/gizlilik-politikasi` },
     ],
-    links: [{ rel: "canonical", href: "https://meteor-shine-hub.lovable.app/gizlilik-politikasi" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/gizlilik-politikasi` }],
     scripts: [
       {
         type: "application/ld+json",

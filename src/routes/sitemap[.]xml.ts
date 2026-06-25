@@ -4,7 +4,7 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const BASE_URL = "https://meteor-shine-hub.lovable.app";
+        const BASE_URL = (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
         const paths = ["/", "/kvkk", "/gizlilik-politikasi", "/cerez-politikasi"];
         const xml = [
           `<?xml version="1.0" encoding="UTF-8"?>`,

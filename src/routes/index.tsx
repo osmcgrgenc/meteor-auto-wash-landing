@@ -27,6 +27,8 @@ import interiorImg from "@/assets/interior-detail.jpg";
 import waxImg from "@/assets/wax-polish.jpg";
 import engineImg from "@/assets/engine-clean.jpg";
 
+const SITE_URL = (import.meta.env.PUBLIC_SITE_URL as string | undefined) ?? "https://meteor-shine-hub.lovable.app";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -46,8 +48,8 @@ export const Route = createFileRoute("/")({
           "Selçuklu Konya'da profesyonel oto yıkama, iç-dış temizlik ve boya koruma. WhatsApp ile tek tıkla randevu oluşturun.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://meteor-shine-hub.lovable.app/" },
-      { property: "og:image", content: "https://meteor-shine-hub.lovable.app/og-image.jpg" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:image", content: `${SITE_URL}/og-image.jpg` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       {
@@ -65,13 +67,13 @@ export const Route = createFileRoute("/")({
         content:
           "Selçuklu Konya'da profesyonel oto yıkama, iç-dış temizlik ve boya koruma. WhatsApp ile tek tıkla randevu oluşturun.",
       },
-      { name: "twitter:image", content: "https://meteor-shine-hub.lovable.app/og-image.jpg" },
+      { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
       {
         name: "twitter:image:alt",
         content: "Meteor Oto Yıkama - Profesyonel araç temizliği ve bakımı",
       },
     ],
-    links: [{ rel: "canonical", href: "https://meteor-shine-hub.lovable.app/" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
     scripts: [
       {
         type: "application/ld+json",

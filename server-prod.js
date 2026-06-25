@@ -96,7 +96,9 @@ async function handleRequest(req) {
 const server = createServer(async (req, res) => {
   try {
     // Convert Node IncomingMessage to Web Request
-    const request = new Request(req.url, {
+    const protocol = req.headers["x-forwarded-proto"] === "https" ? "https" : "http";
+    const host = req.headers.host || "localhost:3000";
+    const request = new Request(`${protocol}://${host}${req.url}`, {
       method: req.method,
       headers: req.headers,
     });

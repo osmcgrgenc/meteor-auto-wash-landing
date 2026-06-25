@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "vite build && mkdir -p public && cp -r dist/client/* public/",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "start": "srvx --prod --static=./dist/client --entry ./dist/server/server.js"
+    "start": "srvx --prod public dist/server/server.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

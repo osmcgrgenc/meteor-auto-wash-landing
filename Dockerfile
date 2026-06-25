@@ -22,8 +22,8 @@ COPY --from=builder /app/bun.lock ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/server-prod.js ./
 
 EXPOSE 3000
 
-# Use node_modules/.bin/srvx or bunx
-CMD ["bunx", "srvx", "--prod", "/app/public", "/app/dist/server/server.js"]
+CMD ["bun", "run", "server-prod.js"]

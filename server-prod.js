@@ -1,14 +1,17 @@
 import { createServer } from "node:http";
-import { createReadStream, existsSync, statSync } from "node:fs";
-import { join, extname } from "node:path";
+import { readFile, stat } from "node:fs/promises";
+import { join, extname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
-const DIST_CLIENT = join(__dirname, "dist/client");
-const SERVER_FILE = join(__dirname, "dist/server/server.js");
-
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 const HOST = process.env.HOST || "0.0.0.0";
+const PUBLIC_DIR = resolve(__dirname, "public");
+const SERVER_ENTRY = resolve(__dirname, "dist/server/server.js");
+
+// Load the server entry
+const serverMod = await import(SERVER_ENTRY);
+const handler = serverMod.default ?? serverMod;
 
 // MIME types
 const MIME_TYPES = {
@@ -21,98 +24,100 @@ const MIME_TYPES = {
   ".jpeg": "image/jpeg",
   ".svg": "image/svg+xml",
   ".ico": "image/x-icon",
-  ".txt": "text/plain",
-  ".xml": "application/xml",
+  ".webp": "image/webp",
+  ".woff": "font/woff",
+  ".woff2": "font/woff2",
 };
 
-// Dynamic server module
-let serverHandler;
-async function loadServer() {
-  if (!serverHandler) {
-    const serverModule = await import(SERVER_FILE);
-    serverHandler = serverModule.default;
-  }
-  return serverHandler;
-}
+async function serveStatic(urlPath) {
+  // Remove leading slash
+  const pathname = urlPath.startsWith("/") ? urlPath.slice(1) : urlPath;
+  const filePath = join(PUBLIC_DIR, pathname);
 
-function serveStaticFile(filePath, res) {
-  const ext = extname(filePath);
-  const contentType = MIME_TYPES[ext] || "application/octet-stream";
-  res.writeHead(200, { "Content-Type": contentType });
-  createReadStream(filePath).pipe(res);
-}
-
-async function handleRequest(req, res) {
-  const baseUrl = `http://${req.headers.host}`;
-  const url = new URL(req.url, baseUrl);
-
-  console.log(`${req.method} ${req.url}`);
-
-  // Skip favicon requests
-  if (url.pathname === "/favicon.ico") {
-    res.writeHead(204);
-    res.end();
-    return;
-  }
-
-  // Try static file first
-  const staticPath = join(DIST_CLIENT, url.pathname);
-
-  if (existsSync(staticPath)) {
-    const stat = statSync(staticPath);
-
-    if (stat.isDirectory()) {
-      const indexPath = join(staticPath, "index.html");
-      if (existsSync(indexPath)) {
-        serveStaticFile(indexPath, res);
-        return;
-      }
-      res.writeHead(404, { "Content-Type": "text/plain" });
-      res.end("Not Found");
-      return;
-    }
-
-    serveStaticFile(staticPath, res);
-    return;
-  }
-
-  // For root path, try SSR
-  if (url.pathname === "/") {
-    try {
-      const handler = await loadServer();
-      const request = new Request(url, {
-        method: req.method,
-        headers: req.headers,
-      });
-      const response = await handler.fetch(request, { NODE_ENV: "production" }, {});
-      res.writeHead(response.status, Object.fromEntries(response.headers.entries()));
-      const body = await response.text();
-      res.end(body);
-      return;
-    } catch (error) {
-      console.error("SSR Error for /:", error);
-    }
-  }
-
-  // Let SSR handle other requests
   try {
-    const handler = await loadServer();
-    const request = new Request(url, {
+    const statResult = await stat(filePath);
+    if (statResult.isDirectory()) {
+      // Try index.html
+      const indexPath = join(filePath, "index.html");
+      const indexStat = await stat(indexPath);
+      if (indexStat.isFile()) {
+        const content = await readFile(indexPath);
+        return new Response(content, {
+          headers: { "Content-Type": "text/html; charset=utf-8" },
+        });
+      }
+    } else {
+      const content = await readFile(filePath);
+      const ext = extname(filePath);
+      const contentType = MIME_TYPES[ext] || "application/octet-stream";
+      return new Response(content, {
+        headers: { "Content-Type": contentType },
+      });
+    }
+  } catch {
+    // File not found
+    return null;
+  }
+}
+
+async function handleRequest(req) {
+  const url = new URL(req.url, `http://${req.headers.host}`);
+  const pathname = url.pathname;
+
+  // Health endpoint
+  if (pathname === "/health") {
+    return new Response(JSON.stringify({ status: "ok" }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  // Static assets — only /assets/* from public/
+  if (pathname.startsWith("/assets/")) {
+    const staticResponse = await serveStatic(pathname);
+    if (staticResponse) return staticResponse;
+  }
+
+  // Favicon
+  if (pathname === "/favicon.ico") {
+    const staticResponse = await serveStatic("/favicon.ico");
+    if (staticResponse) return staticResponse;
+  }
+
+  // SSR for everything else
+  try {
+    return await handler.fetch(req, { PUBLIC_SITE_URL: process.env.PUBLIC_SITE_URL }, {});
+  } catch (error) {
+    console.error("SSR error:", error);
+    return new Response("Internal Server Error", { status: 500 });
+  }
+}
+
+const server = createServer(async (req, res) => {
+  try {
+    // Convert Node IncomingMessage to Web Request
+    const request = new Request(req.url, {
       method: req.method,
       headers: req.headers,
     });
-    const response = await handler.fetch(request, { NODE_ENV: "production" }, {});
-    res.writeHead(response.status, Object.fromEntries(response.headers.entries()));
+
+    const response = await handleRequest(request);
+
+    // Convert Web Response to Node ServerResponse
+    res.statusCode = response.status;
+    response.headers.forEach((value, key) => {
+      res.setHeader(key, value);
+    });
+
     const body = await response.text();
     res.end(body);
   } catch (error) {
-    console.error("SSR Error:", error);
-    res.writeHead(500, { "Content-Type": "text/plain" });
+    console.error("Request error:", error);
+    res.statusCode = 500;
     res.end("Internal Server Error");
   }
-}
+});
 
-const server = createServer(handleRequest);
 server.listen(PORT, HOST, () => {
   console.log(`Server running at http://${HOST}:${PORT}/`);
 });

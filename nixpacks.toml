@@ -1,9 +1,13 @@
 [build]
   command = "bun install && bun run build"
+  providers = ["node", "bun"]
 
 [start]
-  command = "srvx --prod --static=./dist/client --entry ./dist/server/server.js"
+  command = "node server-prod.js"
   port = 3000
 
 [vars]
   NODE_ENV = "production"
+
+[nixpacks]
+  node_version = "22"

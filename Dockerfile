@@ -25,5 +25,5 @@ COPY --from=builder /app/dist ./dist
 
 EXPOSE 3000
 
-# Use ABSOLUTE paths for srvx
-CMD ["sh", "-c", "srvx --prod /app/public /app/dist/server/server.js"]
+# Use node_modules/.bin/srvx or bunx
+CMD ["bunx", "srvx", "--prod", "/app/public", "/app/dist/server/server.js"]

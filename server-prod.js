@@ -75,6 +75,60 @@ async function handleRequest(req) {
     });
   }
 
+  // Robots.txt — serve from public or generate dynamically
+  if (pathname === "/robots.txt") {
+    const staticResponse = await serveStatic("/robots.txt");
+    if (staticResponse) return staticResponse;
+    // Generate dynamically if not found in public/
+    const siteUrl = process.env.PUBLIC_SITE_URL ?? "https://meteor-oto-yikama.com";
+    const robotsContent = `User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: ${siteUrl}/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Block AI training bots
+User-agent: GPTBot
+Disallow: /
+User-agent: ChatGPT-User
+Disallow: /
+User-agent: Claude-Web
+Disallow: /
+User-agent: Bytespider
+Disallow: /
+User-agent: Google-Extended
+Disallow: /`;
+    return new Response(robotsContent, {
+      status: 200,
+      headers: { "Content-Type": "text/plain; charset=utf-8" },
+    });
+  }
+
+  // Sitemap.xml — generate dynamically
+  if (pathname === "/sitemap.xml") {
+    const siteUrl = process.env.PUBLIC_SITE_URL ?? "https://meteor-oto-yikama.com";
+    const today = new Date().toISOString().split("T")[0];
+    const routes = [
+      { path: "/", priority: "1.0", changefreq: "weekly" },
+      { path: "/kvkk", priority: "0.3", changefreq: "yearly" },
+      { path: "/gizlilik-politikasi", priority: "0.3", changefreq: "yearly" },
+      { path: "/cerez-politikasi", priority: "0.3", changefreq: "yearly" },
+    ];
+    const urls = routes
+      .map(
+        (r) => `<url><loc>${siteUrl}${r.path}</loc><lastmod>${today}</lastmod><changefreq>${r.changefreq}</changefreq><priority>${r.priority}</priority></url>`
+      )
+      .join("");
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`;
+    return new Response(sitemap, {
+      status: 200,
+      headers: { "Content-Type": "application/xml; charset=utf-8" },
+    });
+  }
+
   // Static assets — only /assets/* from public/
   if (pathname.startsWith("/assets/")) {
     const staticResponse = await serveStatic(pathname);
